@@ -33,6 +33,7 @@ const SingleProduct = () => {
 		productColor,
 		productID: id,
 		title,
+		amount,
 	};
 
 	const dispatch = useDispatch();
