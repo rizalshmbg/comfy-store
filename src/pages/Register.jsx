@@ -32,21 +32,18 @@ const Register = () => {
 					label='username'
 					name='username'
 					placeholder='Enter your username'
-					defaultValue='john doe69'
 				/>
 				<FormInput
 					type='email'
 					label='email'
 					name='email'
 					placeholder='Enter your email'
-					defaultValue='john doe69@gmail.com'
 				/>
 				<FormInput
 					type='password'
 					label='password'
 					name='password'
 					placeholder='Enter your password'
-					defaultValue='secret'
 				/>
 				<div className='mt-4'>
 					<SubmitBtn text='Register' />
