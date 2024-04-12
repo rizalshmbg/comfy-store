@@ -3,8 +3,13 @@ import { customFetch } from '../utils';
 
 const url = '/products?featured=true';
 
+const FeaturedProductsQuery = {
+	queryKey: ['featuredProducts'],
+	queryFn: () => customFetch(url),
+};
+
 export const loader = (queryClient) => async () => {
-	const resp = await customFetch(url);
+	const resp = await queryClient.ensureQueryData(FeaturedProductsQuery);
 	const products = resp.data.data;
 	return { products };
 };
