@@ -4,10 +4,12 @@ import { Link, useLoaderData } from 'react-router-dom';
 import { addItem } from '../features/cart/cartSlice';
 import { customFetch, formatPrice, generateAmountOptions } from '../utils';
 
-export const loader = async ({ params }) => {
-	const resp = await customFetch(`/products/${params.id}`);
-	return { product: resp.data.data };
-};
+export const loader =
+	(queryClient) =>
+	async ({ params }) => {
+		const resp = await customFetch(`/products/${params.id}`);
+		return { product: resp.data.data };
+	};
 
 const SingleProduct = () => {
 	const { product } = useLoaderData();
