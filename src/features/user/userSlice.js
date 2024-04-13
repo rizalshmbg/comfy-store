@@ -16,9 +16,17 @@ const getThemeFromLocalStorage = () => {
 	return theme;
 };
 
+const getIcoFromLocalStorage = () => {
+	const ico = localStorage.getItem('comfy-store: ico') || null;
+	document.querySelector('link').href;
+	console.log(ico);
+	return ico;
+};
+
 const initialState = {
 	user: getUserFromLocalStorage(),
 	theme: getThemeFromLocalStorage(),
+	ico: getIcoFromLocalStorage(),
 };
 
 const userSlice = createSlice({
@@ -39,6 +47,14 @@ const userSlice = createSlice({
 			const { winter, sunset } = themes;
 			state.theme = state.theme === sunset ? winter : sunset;
 			document.documentElement.setAttribute('data-theme', state.theme);
+
+			let ico = document.querySelector('link');
+			state.ico =
+				state.theme === winter
+					? (ico.href = 'Comfy-Store-Icon.png')
+					: (ico.href = 'Comfy-Store-Icon-2.png');
+
+			localStorage.setItem('comfy-store: ico', ico.href);
 			localStorage.setItem('comfy-store: theme', state.theme);
 		},
 	},
